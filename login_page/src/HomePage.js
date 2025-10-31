@@ -2,13 +2,41 @@ import React, { useState } from 'react';
 import './HomePage.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import axios from 'axios';
 
 function HomePage({ user, onSignOut }) {
   const [activePage, setActivePage] = useState('dashboard');
   const [selectedType, setSelectedType] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
+  const [message, setMessage] = useState('');
 
+  // ✅ Function to save appointment to backend
+  const handleBookAppointment = async () => {
+    if (!selectedType || !selectedTime) {
+      setMessage('⚠️ Please select appointment type and time.');
+      return;
+    }
+
+    const appointmentData = {
+      userId: user?._id || 'guest',
+      type: selectedType,
+      date: selectedDate.toISOString().split('T')[0],
+      time: selectedTime,
+    };
+
+    try {
+      const response = await axios.post('http://localhost:5001/api/appointments', appointmentData);
+      if (response.data.success) {
+        setMessage('✅ Appointment booked successfully!');
+      } else {
+        setMessage('❌ Failed to book appointment.');
+      }
+    } catch (error) {
+      console.error('Error booking appointment:', error);
+      setMessage('⚠️ Something went wrong, please try again.');
+    }
+  };
 
   const renderContent = () => {
     switch (activePage) {
@@ -94,44 +122,28 @@ function HomePage({ user, onSignOut }) {
 
             <div className="doctors-grid">
               <div className="doctor-card">
-                <img
-                  src="/image1.png"
-                  alt="Dr. Sarah Johnson"
-                  className="doctor-avatar"
-                />
+                <img src="/image1.png" alt="Dr. Sarah Johnson" className="doctor-avatar" />
                 <h4>Dr. Ahmed Ibrahim Shanab</h4>
                 <p>Cardiologist</p>
                 <button className="secondary-btn">View Profile</button>
               </div>
 
               <div className="doctor-card">
-                <img
-                  src="/image2.png"
-                  alt="Dr. Ahmed Ali"
-                  className="doctor-avatar"
-                />
+                <img src="/image2.png" alt="Dr. Ahmed Ali" className="doctor-avatar" />
                 <h4>Dr. Moaz Mohamed</h4>
                 <p>Neurologist</p>
                 <button className="secondary-btn">View Profile</button>
               </div>
 
               <div className="doctor-card">
-                <img
-                  src="/image3.png"
-                  alt="Dr. Emily Carter"
-                  className="doctor-avatar"
-                />
+                <img src="/image3.png" alt="Dr. Emily Carter" className="doctor-avatar" />
                 <h4>Dr. Ahmed Makram</h4>
                 <p>Dermatologist</p>
                 <button className="secondary-btn">View Profile</button>
               </div>
 
               <div className="doctor-card">
-                <img
-                  src="/image4.png"
-                  alt="Dr. Omar Hassan"
-                  className="doctor-avatar"
-                />
+                <img src="/image4.png" alt="Dr. Omar Hassan" className="doctor-avatar" />
                 <h4>Dr. Ahmed ElKady</h4>
                 <p>Pediatrician</p>
                 <button className="secondary-btn">View Profile</button>
@@ -163,9 +175,7 @@ function HomePage({ user, onSignOut }) {
                 ].map((type) => (
                   <div
                     key={type.id}
-                    className={`appointment-type ${
-                      selectedType === type.id ? 'selected' : ''
-                    }`}
+                    className={`appointment-type ${selectedType === type.id ? 'selected' : ''}`}
                     onClick={() => setSelectedType(type.id)}
                   >
                     <h4>{type.name}</h4>
@@ -178,11 +188,7 @@ function HomePage({ user, onSignOut }) {
             {/* Calendar Picker */}
             <div className="calendar-container">
               <h3>Select date</h3>
-              <Calendar
-                onChange={setSelectedDate}
-                value={selectedDate}
-                minDate={new Date()}
-              />
+              <Calendar onChange={setSelectedDate} value={selectedDate} minDate={new Date()} />
             </div>
 
             {/* Time Slot Picker */}
@@ -206,9 +212,13 @@ function HomePage({ user, onSignOut }) {
               </div>
             </div>
 
-            <button className="primary-btn book-btn">
+            {/* Book Button */}
+            <button className="primary-btn book-btn" onClick={handleBookAppointment}>
               Book Appointment
             </button>
+
+            {/* Booking Message */}
+            {message && <p className="booking-message">{message}</p>}
 
             <button className="back-btn" onClick={() => setActivePage('dashboard')}>
               ⬅ Back
@@ -216,19 +226,17 @@ function HomePage({ user, onSignOut }) {
           </section>
         );
 
-
       case 'about':
         return (
           <section className="about-section">
             <h3>About HealthCare Plus</h3>
             <p>
-              HealthCare Plus is a modern platform designed to make managing your health simple and convenient.
-              We connect patients with top doctors, simplify appointment scheduling, and help you stay informed about your wellbeing.
+              HealthCare Plus is a modern platform designed to make managing your health simple and
+              convenient. We connect patients with top doctors, simplify appointment scheduling, and
+              help you stay informed about your wellbeing.
             </p>
             <h3>Our Mission</h3>
-            <p>
-              To provide accessible, efficient, and personalized healthcare for everyone.
-            </p>
+            <p>To provide accessible, efficient, and personalized healthcare for everyone.</p>
             <button className="back-btn" onClick={() => setActivePage('dashboard')}>
               ⬅ Back
             </button>
