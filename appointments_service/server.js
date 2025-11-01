@@ -36,13 +36,26 @@ app.post("/api/appointments", async (req, res) => {
   }
 });
 
-// ✅ GET: Fetch all appointments (optional)
-app.get("/api/appointments", async (req, res) => {
+// ✅ GET: Fetch all appointments for a specific user
+app.get("/api/appointments/:userId", async (req, res) => {
   try {
-    const appointments = await Appointment.find();
+    const { userId } = req.params;
+    const appointments = await Appointment.find({ userId });
     res.json({ success: true, appointments });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, message: "Failed to fetch appointments" });
+  }
+});
+
+// ✅ DELETE: Delete an appointment by ID
+app.delete("/api/appointments/:id", async (req, res) => {
+  try {
+    await Appointment.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Appointment deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Failed to delete appointment" });
   }
 });
 

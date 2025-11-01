@@ -159,6 +159,26 @@
   margin: 5px 0;
 }
 
+.next-appointments .appointment-item {
+  background: #f8f9fa;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
 /* ⚡ Actions Section */
 .actions-section {
   flex: 2;
@@ -400,6 +420,61 @@
   background: #3498db;
   color: #fff;
 }
+
+.appointment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.appointment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fb;
+  border: 1px solid #dce1e7;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.appointment-item:hover {
+  background-color: #eef4ff;
+  transform: translateY(-2px);
+}
+
+.appointment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.appointment-info strong {
+  color: #2c3e50;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.appointment-info p {
+  color: #555;
+  margin: 0;
+  font-size: 14px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
 
 /* 🏥 About Section */
 .about-section {
