@@ -52,7 +52,7 @@ function HomePage({ user, onSignOut }) {
       const response = await axios.post('http://localhost:5001/api/appointments', appointmentData);
       if (response.data.success) {
         setMessage('✅ Appointment booked successfully!');
-        fetchAppointments(); // Refresh appointments after booking
+        fetchAppointments();
       } else {
         setMessage('⚠️ Failed to book appointment.');
       }
@@ -66,7 +66,7 @@ function HomePage({ user, onSignOut }) {
   const handleDeleteAppointment = async (id) => {
     try {
       await axios.delete(`http://localhost:5001/api/appointments/${id}`);
-      fetchAppointments(); // Refresh after deletion
+      fetchAppointments();
     } catch (error) {
       console.error('Error deleting appointment:', error);
     }
@@ -124,7 +124,6 @@ function HomePage({ user, onSignOut }) {
                         );
                       })}
                     </ul>
-
                   ) : (
                     <p>No upcoming appointments</p>
                   )}
@@ -171,6 +170,52 @@ function HomePage({ user, onSignOut }) {
               </div>
             </section>
           </>
+        );
+
+      case 'doctors':
+        return (
+          <section className="doctors-section">
+            <h3>Our Doctors</h3>
+            <p style={{ textAlign: 'center', color: '#3498db', marginBottom: '30px' }}>
+              Meet our team of experienced healthcare professionals.
+            </p>
+
+            <div className="doctors-grid">
+              <div className="doctor-card">
+                <img src="/image1.png" alt="Dr. Ahmed Ibrahim Shanab" className="doctor-avatar" />
+                <h4>Dr. Ahmed Ibrahim Shanab</h4>
+                <p>Cardiologist</p>
+                <button className="secondary-btn">View Profile</button>
+              </div>
+
+              <div className="doctor-card">
+                <img src="/image2.png" alt="Dr. Moaz Mohamed" className="doctor-avatar" />
+                <h4>Dr. Moaz Mohamed</h4>
+                <p>Neurologist</p>
+                <button className="secondary-btn">View Profile</button>
+              </div>
+
+              <div className="doctor-card">
+                <img src="/image3.png" alt="Dr. Ahmed Makram" className="doctor-avatar" />
+                <h4>Dr. Ahmed Makram</h4>
+                <p>Dermatologist</p>
+                <button className="secondary-btn">View Profile</button>
+              </div>
+
+              <div className="doctor-card">
+                <img src="/image4.png" alt="Dr. Ahmed ElKady" className="doctor-avatar" />
+                <h4>Dr. Ahmed ElKady</h4>
+                <p>Pediatrician</p>
+                <button className="secondary-btn">View Profile</button>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '40px' }}>
+              <button className="back-btn" onClick={() => setActivePage('dashboard')}>
+                ⬅ Back
+              </button>
+            </div>
+          </section>
         );
 
       case 'appointments':
@@ -241,8 +286,9 @@ function HomePage({ user, onSignOut }) {
           <section className="about-section">
             <h3>About HealthCare Plus</h3>
             <p>
-              HealthCare Plus is a modern platform designed to make managing your health simple and convenient. 
-              We connect patients with top doctors, simplify appointment scheduling, and help you stay informed about your wellbeing.
+              HealthCare Plus is a modern platform designed to make managing your health simple and
+              convenient. We connect patients with top doctors, simplify appointment scheduling, and
+              help you stay informed about your wellbeing.
             </p>
             <h3>Our Mission</h3>
             <p>To provide accessible, efficient, and personalized healthcare for everyone.</p>
@@ -271,6 +317,12 @@ function HomePage({ user, onSignOut }) {
               onClick={() => setActivePage('dashboard')}
             >
               Dashboard
+            </button>
+            <button
+              className={`nav-link ${activePage === 'doctors' ? 'active' : ''}`}
+              onClick={() => setActivePage('doctors')}
+            >
+              Doctors
             </button>
             <button
               className={`nav-link ${activePage === 'appointments' ? 'active' : ''}`}
