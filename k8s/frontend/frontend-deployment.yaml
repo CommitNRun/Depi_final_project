@@ -25,13 +25,3 @@ spec:
               value: "true"
             - name: WDS_SOCKET_PORT
               value: "3000"
-            - name: HOST
-              value: "0.0.0.0"
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "300Mi"
-            limits:
-              cpu: "250m"
-              memory: "1Gi"
-          
