@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointments-service
+  namespace: microapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appointments-service
+  template:
+    metadata:
+      labels:
+        app: appointments-service
+    spec:
+      containers:
+        - name: appointments-service
+          image: your-dockerhub-username/appointments-service:latest
+          ports:
+            - containerPort: 5001
+          env:
+            - name: MONGO_URL
+              value: "mongodb://admin:secret@mongo:27017/"
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
