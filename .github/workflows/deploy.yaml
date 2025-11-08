@@ -59,9 +59,9 @@ jobs:
       - name: Refresh local Kubernetes deployments
         run: |
           echo "🔄 Refreshing Kubernetes deployments..."
-          kubectl set image deployment/appointments-service appointments-service=${{ secrets.DOCKERHUB_USERNAME }}/service-api:latest -n microapp
-          kubectl set image deployment/backend backend=${{ secrets.DOCKERHUB_USERNAME }}/service-worker:latest -n microapp
-          kubectl set image deployment/frontend frontend=${{ secrets.DOCKERHUB_USERNAME }}/service-frontend:latest -n microapp
+          kubectl set image deployment/appointments-service appointments-service=${{ secrets.DOCKERHUB_USERNAME }}/appointments_service:latest -n microapp
+          kubectl set image deployment/backend backend=${{ secrets.DOCKERHUB_USERNAME }}/express:latest -n microapp
+          kubectl set image deployment/frontend frontend=${{ secrets.DOCKERHUB_USERNAME }}/login_page:latest -n microapp
           
           echo "🌀 Rolling out updates..."
           kubectl rollout restart deployment/appointments-service -n microapp
