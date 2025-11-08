@@ -6,6 +6,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
     - host: localhost
       http:
@@ -17,17 +18,19 @@ spec:
                 name: frontend
                 port:
                   number: 3000
-          # - path: /api
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: backend
-          #       port:
-          #         number: 5000
-          # - path: /api/appointments
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: appointments-service
-          #       port:
-          #         number: 5001
+
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 5000
+
+          - path: /api/appointments
+            pathType: Prefix
+            backend:
+              service:
+                name: appointments-service
+                port:
+                  number: 5001
