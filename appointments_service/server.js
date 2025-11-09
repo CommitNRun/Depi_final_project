@@ -24,6 +24,11 @@ const appointmentSchema = new mongoose.Schema({
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 
+// ✅ Root route - Add this
+app.get("/", (req, res) => {
+  res.json({ message: "Appointments service is running" });
+});
+
 // ✅ POST: Create new appointment
 app.post("/appointments", async (req, res) => {
   try {
