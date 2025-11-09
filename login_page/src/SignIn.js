@@ -22,7 +22,7 @@ function SignIn(props) {
     setError("");
 
     try {
-      const response = await fetch("/login", {
+      const response = await fetch("/api/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -96,7 +96,7 @@ function SignIn(props) {
               href="#signup"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "http://localhost/signup";
+                window.location.href = "/signup";
               }}
             >
               Create one here

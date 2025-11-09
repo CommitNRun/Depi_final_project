@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 // 🧩 Signup route
-app.post("/signups", async (req, res) => {
+app.post("/signup", async (req, res) => {
   try {
     const { firstName, lastName, email, phone, dateOfBirth, gender, password } = req.body;
     const existing = await User.findOne({ email });

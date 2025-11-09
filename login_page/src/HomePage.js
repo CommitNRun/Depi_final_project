@@ -49,7 +49,7 @@ function HomePage({ user, onSignOut }) {
     };
 
     try {
-      const response = await axios.post('/appointments', appointmentData);
+      const response = await axios.post('http://appointments-service:5001/api/appointments', appointmentData);
       if (response.data.success) {
         setMessage('✅ Appointment booked successfully!');
         fetchAppointments();

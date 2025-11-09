@@ -41,7 +41,7 @@ function SignUp(props) {
 
     try {
       // 🧩 Send signup data to backend
-      const response = await fetch("/signups", {
+      const response = await fetch("/api/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
