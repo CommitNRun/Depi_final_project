@@ -25,7 +25,7 @@ const appointmentSchema = new mongoose.Schema({
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 
 // ✅ POST: Create new appointment
-app.post("/api/appointments", async (req, res) => {
+app.post("/appointments", async (req, res) => {
   try {
     const appointment = new Appointment(req.body);
     await appointment.save();
@@ -37,7 +37,7 @@ app.post("/api/appointments", async (req, res) => {
 });
 
 // ✅ GET: Fetch all appointments for a specific user
-app.get("/api/appointments/:userId", async (req, res) => {
+app.get("/appointments/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
     const appointments = await Appointment.find({ userId });
@@ -49,7 +49,7 @@ app.get("/api/appointments/:userId", async (req, res) => {
 });
 
 // ✅ DELETE: Delete an appointment by ID
-app.delete("/api/appointments/:id", async (req, res) => {
+app.delete("/appointments/:id", async (req, res) => {
   try {
     await Appointment.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: "Appointment deleted successfully" });
