@@ -22,7 +22,7 @@ function HomePage({ user, onSignOut }) {
   const fetchAppointments = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5001/api/appointments/${user?._id || 'guest'}`
+        `http://appointments-service:5001/api/appointments/${user?._id || 'guest'}`
       );
       if (response.data.success) {
         setAppointments(response.data.appointments);
@@ -49,7 +49,7 @@ function HomePage({ user, onSignOut }) {
     };
 
     try {
-      const response = await axios.post('http://localhost:5001/api/appointments', appointmentData);
+      const response = await axios.post('http://appointments-service:5001/api/appointments', appointmentData);
       if (response.data.success) {
         setMessage('✅ Appointment booked successfully!');
         fetchAppointments();
@@ -65,7 +65,7 @@ function HomePage({ user, onSignOut }) {
   // ✅ Delete appointment function
   const handleDeleteAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/appointments/${id}`);
+      await axios.delete(`http://appointments-service:5001/api/appointments/${id}`);
       fetchAppointments();
     } catch (error) {
       console.error('Error deleting appointment:', error);
