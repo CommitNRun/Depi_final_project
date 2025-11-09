@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: appointments-service
   namespace: microapp
+  labels:
+    app: appointments-service
 spec:
   replicas: 1
   selector:
@@ -15,9 +17,16 @@ spec:
     spec:
       containers:
         - name: appointments-service
-          image: modoma21/appointments_service
+          image: modoma21/appointments_service:latest
           ports:
             - containerPort: 5001
           env:
             - name: MONGO_URL
               value: "mongodb://admin:secret@mongo:27017/"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
