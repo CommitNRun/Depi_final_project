@@ -22,7 +22,7 @@ function App() {
 
         {/* ✅ Pass redirect function to SignUp */}
         <Route
-          path="/signups"
+          path="/signup"
           element={
             <SignUp
               onSuccessfulSignup={() => {

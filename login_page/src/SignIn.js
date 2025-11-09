@@ -93,10 +93,10 @@ function SignIn(props) {
           <div className="signup-link">
             Don’t have an account?{" "}
             <a
-              href="#signups"
+              href="#signup"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "/signups";
+                window.location.href = "/signup";
               }}
             >
               Create one here
