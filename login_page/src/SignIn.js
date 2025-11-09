@@ -1,5 +1,6 @@
 // src/SignIn.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 
 function SignIn(props) {
@@ -8,6 +9,7 @@ function SignIn(props) {
     password: "",
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -96,7 +98,7 @@ function SignIn(props) {
               href="#signup"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "/signup";
+                navigate("/signup");
               }}
             >
               Create one here
