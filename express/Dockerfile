@@ -1,17 +1,12 @@
-# Use official Node.js image
-FROM node:20-alpine
+# Use the official Node image
+FROM node:20
 
 WORKDIR /app
 
-# Copy only package files first to leverage Docker cache
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 
-# Copy the rest of the source code
 COPY . .
 
-# Expose the port backend listens on
 EXPOSE 5000
-
-# Run the backend
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
