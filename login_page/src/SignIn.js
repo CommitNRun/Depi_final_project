@@ -96,7 +96,7 @@ function SignIn(props) {
               href="#signup"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "/signup";
+                window.location.href = "http://localhost/signup";
               }}
             >
               Create one here
