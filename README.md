@@ -1,186 +1,151 @@
-#📌 1. Project Overview
-🎯 Project Idea
+# 📌 Healthcare Web Application Deployment
+### A functional healthcare web application that supports doctor appointment reservations, secured with authentication, fully containerized, monitored, and deployed locally using Kubernetes. This project also includes a complete CI/CD pipeline for continuous updates, ensuring reliability and scalability for healthcare-grade systems.
 
+## 👥 Team Members
+| Name                              | Responsibilities                                    |
+| --------------------------------- | --------------------------------------------------- |
+| Mohamed Ahmed Hassan Doma         | Kubernetes, microservices, Docker, CI/CD testing    |
+| Ahmed Tamer Ahmed Elkady          | CI/CD pipeline creation, monitoring setup           |
+| Ahmed Mohamed Ahmed Makram        | Dockerfiles for services                            |
+| Ahmed Ibrahim Ahmed Abo shanab    | Dockerfiles & Docker Compose setup                  |
+| Moaz Mohamed Adel ElGendy         | Dockerfiles, webserver configuration, CI/CD testing |
+| Ahmed Hossam Abdelhamid Abdelatty | Docker images & Node.js configuration               |
+
+## 📌 1. Project Overview
+
+### 🎯 Project Idea
 To build, containerize, and monitor a working healthcare webservice. The entire stack — app + monitoring — runs locally on Kubernetes.
 
-🎯 Project Objective
-
+### 🎯 Project Objective
 The system allows users to reserve doctor appointments, authenticate securely, and interact with a simple GUI.
 Custom metrics are exposed, collected with Prometheus, and visualized using Grafana dashboards.
 
-🏥 Healthcare Requirement
-
+### 🏥 Healthcare Requirement
 The system is built with a daily update cycle, aligning with healthcare environments that continuously add features, doctors, and services.
 
-⚙️ 2. Technology Stack
-Backend
+## ⚙️ 2. Technology Stack
 
+### Backend
 Node.js
-
 Express.js
 
-Frontend
-
+### Frontend
 React.js
-
 JavaScript, CSS
 
-Database
-
+### Database
 MongoDB
 
-Containerization & Orchestration
-
+### Containerization & Orchestration
 Docker
-
 Docker Compose
-
 Kubernetes (via Docker Desktop + kubectl)
-
 YAML manifests
-
 Helm Charts (Prometheus + Grafana)
 
-CI/CD Pipeline
-
+### CI/CD Pipeline
 GitHub Actions
-
 Docker Hub registry
 
-Monitoring
+### Monitoring
+Prometheus
+Grafana
 
-Prometheus (latest)
+## 📐 3. System Architecture & Design
 
-Grafana (latest)
-
-📐 3. System Architecture & Design
-General Deployment Diagram
-
-Place your actual diagram under:
-
-/diagrams/general-diagram.png
-
-
-Insert in README:
-
+### General Deployment Diagram
 ![General Deployment Diagram](./diagrams/general-diagram.png)
 
-Component Diagram (placeholder)
-![Component Diagram](./diagrams/component-diagram.png)
+## 🔄 4. System Workflow
 
-Deployment Diagram (placeholder)
-![Deployment Diagram](./diagrams/deployment-diagram.png)
+1. Developer pushes/merges code into GitHub
 
-🔄 4. System Workflow
+2. GitHub Actions triggers CI/CD pipeline
 
-Developer pushes/merges code into GitHub
+3. Pipeline builds Docker images
 
-GitHub Actions triggers CI/CD pipeline
+4. Runs tests
 
-Pipeline builds Docker images
+5. Pushes images to Docker Hub
 
-Runs unit tests
+6. Kubernetes cluster automatically pulls updated images
 
-Pushes images to Docker Hub
+7. Local K8s cluster refreshes all deployments
 
-Kubernetes cluster automatically pulls updated images
+8. Prometheus scrapes service metrics
 
-Local K8s cluster refreshes all deployments
+9. Grafana visualizes performance, load, and error dashboards
 
-Prometheus scrapes service metrics
+## 📝 5. Functional Requirements
 
-Grafana visualizes performance, load, and error dashboards
+### Core Features
 
-📝 5. Functional Requirements
-Core Features
+- User authentication (Sign in / Sign up)
 
-User authentication (Sign in / Sign up)
+- Appointment reservation service
 
-Appointment reservation service
+- Fast and intuitive GUI interface
 
-Fast and intuitive GUI interface
+- Local secure deployment
 
-Local secure deployment
+## 🔒 6. Non-Functional Requirements
+- Performance: Fast response and low latency
 
-🔒 6. Non-Functional Requirements
+- Security: Enforced authentication + isolated environment
 
-Performance: Fast response and low latency
+- Usability: Clean and simple UI
 
-Security: Enforced authentication + isolated environment
+- Reliability: Daily automatic updates via CI/CD
 
-Usability: Clean and simple UI
+- Monitoring: Full stack observability with Prometheus & Grafana
 
-Reliability: Daily automatic updates via CI/CD
 
-Monitoring: Full stack observability with Prometheus & Grafana
+## 📊 7. Monitoring & Metrics
+### Exposed Custom Metrics
 
-📊 7. Monitoring & Metrics
-Exposed Custom Metrics
+- Pod health
 
-Pod health
+- Performance metrics
 
-Performance metrics
+- API load
 
-API load
+- Error rates
 
-Error rates
+### Grafana Dashboards
 
-Grafana Dashboards
+- Performance dashboard
 
-Performance dashboard
+- API load visualization
 
-API load visualization
+- Error rate tracking
 
-Error rate tracking
-
-🧪 8. Testing
-Testing Method
+## 🧪 8. Testing
+### Testing Method
 
 GitHub Actions runs automated tests on each commit.
 
-Test File Example (app.test.js)
-import { render, screen } from '@testing-library/react';
-import App from './App';
+###### Test File: login_page/src/App.test.js
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-🎬 9. Project Presentation
-
-📽️ Prezi Presentation:
+## 🎬 9. Project Presentation
+### 📽️ Prezi Presentation:
 https://prezi.com/view/tUvrj0WhFkH95kzORWP2/?referral_token=P1aKXtlnB3FN
 
-🚀 10. CI/CD Pipeline Summary
+## 🚀 10. CI/CD Pipeline Summary
 Developer → GitHub Repo → Github Actions (CI/CD) 
 → Build Docker Images → Run Unit Tests 
 → Push to Docker Hub → Kubernetes Pulls Updates 
 → Cluster Auto-Restarts Pods → Prometheus Scrapes Metrics → Grafana Visualizes
 
-📦 11. Installation & Execution
+## 🎉 Final Notes
+### This project showcases a complete deployment ecosystem covering:
 
-(Removed per your request.)
+- Microservices
 
-🎉 12. Final Notes
+- CI/CD automation
 
-This project showcases a complete deployment ecosystem covering:
+- Containerization
 
-Microservices
+- Kubernetes orchestration
 
-CI/CD automation
+- Monitoring & observability
 
-Containerization
-
-Kubernetes orchestration
-
-Monitoring & observability
-
-Built with a clean semi-formal tone and structured documentation for graduation-level project delivery.
