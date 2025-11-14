@@ -27,10 +27,12 @@ The system is built with a daily update cycle, aligning with healthcare environm
 
 ### Backend
 Node.js
+
 Express.js
 
 ### Frontend
 React.js
+
 JavaScript, CSS
 
 ### Database
@@ -38,17 +40,23 @@ MongoDB
 
 ### Containerization & Orchestration
 Docker
+
 Docker Compose
+
 Kubernetes (via Docker Desktop + kubectl)
+
 YAML manifests
+
 Helm Charts (Prometheus + Grafana)
 
 ### CI/CD Pipeline
 GitHub Actions
+
 Docker Hub registry
 
 ### Monitoring
 Prometheus
+
 Grafana
 
 ## 📐 3. System Architecture & Design
