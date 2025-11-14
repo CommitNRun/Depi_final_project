@@ -26,38 +26,38 @@ The system is built with a daily update cycle, aligning with healthcare environm
 ## ⚙️ 2. Technology Stack
 
 ### Backend
-Node.js
+- Node.js
 
 Express.js
 
 ### Frontend
-React.js
+- React.js
 
-JavaScript, CSS
+- JavaScript, CSS
 
 ### Database
-MongoDB
+- MongoDB
 
 ### Containerization & Orchestration
-Docker
+- Docker
 
-Docker Compose
+- Docker Compose
 
-Kubernetes (via Docker Desktop + kubectl)
+- Kubernetes (via Docker Desktop + kubectl)
 
-YAML manifests
+- YAML manifests
 
-Helm Charts (Prometheus + Grafana)
+- Helm Charts (Prometheus + Grafana)
 
 ### CI/CD Pipeline
-GitHub Actions
+- GitHub Actions
 
-Docker Hub registry
+- Docker Hub registry
 
 ### Monitoring
-Prometheus
+- Prometheus
 
-Grafana
+- Grafana
 
 ## 📐 3. System Architecture & Design
 
