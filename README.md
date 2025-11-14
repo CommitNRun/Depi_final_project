@@ -62,7 +62,7 @@ Grafana
 ## 📐 3. System Architecture & Design
 
 ### General Deployment Diagram
-![General Deployment Diagram](./general-diagram.png)
+![General Deployment Diagram](./General_Diagram.png)
 
 ## 🔄 4. System Workflow
 
