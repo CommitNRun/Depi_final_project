@@ -62,7 +62,7 @@ Express.js
 ## 📐 3. System Architecture & Design
 
 ### General Deployment Diagram
-![General Deployment Diagram](./General_Diagram.png)
+![General Deployment Diagram](./final pres.png)
 
 ## 🔄 4. System Workflow
 
