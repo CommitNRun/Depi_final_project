@@ -144,6 +144,9 @@ Developer → GitHub Repo → Github Actions (CI/CD)
 → Push to Docker Hub → Kubernetes Pulls Updates 
 → Cluster Auto-Restarts Pods → Prometheus Scrapes Metrics → Grafana Visualizes
 
+## 🎬 11. Project Demo video
+https://drive.google.com/file/d/1R0G_jXa3tw04gkQnJbcLzMWz7rT-H55M/view?usp=sharing
+
 ## 🎉 Final Notes
 ### This project showcases a complete deployment ecosystem covering:
 
@@ -156,4 +159,6 @@ Developer → GitHub Repo → Github Actions (CI/CD)
 - Kubernetes orchestration
 
 - Monitoring & observability
+
+
 
