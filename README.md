@@ -28,7 +28,7 @@ The system is built with a daily update cycle, aligning with healthcare environm
 ### Backend
 - Node.js
 
-Express.js
+- Express.js
 
 ### Frontend
 - React.js
